@@ -18,6 +18,10 @@ or get into your own Storyblok Space and install this application.
 - List all available stories in the space where this app has been installed
 - Create and download a ZIP Archive (Backup) of the whole space. 
 
+# Upcoming / Planned Features
+- Select certain stories for download
+- Import a backup created by "sb-offline-backup"
+
 ## Build Setup
 
 ```bash
