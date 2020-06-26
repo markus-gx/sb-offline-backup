@@ -1,6 +1,6 @@
 <template>
   <div class="file-import">
-    <b-loading :is-full-page="true" :active.sync="loadingState.zip || loadingState.jsons" :can-cancel="false" />
+    <b-loading :is-full-page="true" :active.sync="loadingState.zip" :can-cancel="false" />
     <b-field class="file">
       <b-upload v-model="zipFile" accept=".zip">
         <a class="button is-primary">
@@ -13,7 +13,7 @@
       </span>
     </b-field>
     <div>
-      <b-button icon-left="import" type="is-primary" :disabled="(jsonFiles === undefined || jsonFiles.length === 0) && zipFile === undefined" @click="startStoryImport">
+      <b-button icon-left="import" type="is-primary" :disabled="zipFile === undefined" @click="startStoryImport">
         Start Import
       </b-button>
     </div>
