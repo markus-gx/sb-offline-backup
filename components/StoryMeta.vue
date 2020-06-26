@@ -7,7 +7,7 @@
         </div>
         <div class="media-content">
           <p class="title is-5">
-            {{ story.name }}
+            {{ story.name }} ({{ story.id }})
           </p>
           <p class="title is-7">
             {{ story.full_slug }}
