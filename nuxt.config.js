@@ -76,5 +76,7 @@ export default {
    ** Build configuration
    ** See https://nuxtjs.org/api/configuration-build/
    */
-  build: {}
+  build: {
+    publicPath: process.env.PUBLIC_URL
+  }
 }
