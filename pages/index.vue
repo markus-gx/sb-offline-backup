@@ -154,7 +154,7 @@ export default {
     async downloadZipArchive (prettyPrint) {
       this.download.started = true
       const zip = new JSZip()
-      for (let i = 0; i < this.getStoriesForDownload; i++) {
+      for (let i = 0; i < this.getStoriesForDownload.length; i++) {
         const data = await this.fetchStory(this.getStoriesForDownload[i].id)
         const jsonData = prettyPrint ? JSON.stringify(data, null, 2) : JSON.stringify(data)
         zip.file(data.full_slug + '.json', jsonData)
