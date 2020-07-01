@@ -13,8 +13,13 @@
       </span>
     </b-field>
     <b-field>
-      <b-checkbox v-model="overwriteExistingStories">
+      <b-checkbox v-model="settings.overwriteExistingStories">
         Overwrite existing Stories
+      </b-checkbox>
+    </b-field>
+    <b-field>
+      <b-checkbox v-model="settings.publish">
+        Publish Imported Stories
       </b-checkbox>
     </b-field>
     <b-notification :active="zipFile !== undefined" type="is-info" has-icon>
@@ -43,7 +48,10 @@ export default {
   data () {
     return {
       zipFile: undefined,
-      overwriteExistingStories: false,
+      settings: {
+        overwriteExistingStories: false,
+        publish: false
+      },
       loadingState: {
         zip: false
       }
@@ -110,15 +118,17 @@ export default {
       for (const story of stories) {
         story.parent_id = this.getParentIdForStory(story)
         if (this.storyExists(story)) {
-          if (!story.is_folder && this.overwriteExistingStories) {
+          if (!story.is_folder && this.settings.overwriteExistingStories) {
             story.id = this.getExistingStoryId(story)
             await this.$store.dispatch('storyblok/updateStory', {
-              story
+              story,
+              publish: this.settings.publish
             })
           }
         } else {
           await this.$store.dispatch('storyblok/createStory', {
-            story
+            story,
+            publish: this.settings.publish
           })
         }
       }

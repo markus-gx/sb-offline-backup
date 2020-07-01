@@ -67,24 +67,31 @@ export const actions = {
     const { data } = await axios.get(`/auth/spaces/${state.spaceId}/stories/${id}`)
     return data.story
   },
-  async updateStory ({ state, commit }, { story }) {
+  async updateStory ({ state, commit }, { story, publish }) {
     try {
-      const storyId = story.id
-      story.id = undefined
-      const { data } = await axios.put(`/auth/spaces/${state.spaceId}/stories/${storyId}`, {
+      const body = {
         story,
         force_update: 1
-      })
+      }
+      if (publish) {
+        body.publish = 1
+      }
+      const { data } = await axios.put(`/auth/spaces/${state.spaceId}/stories/${story.id}`, body)
       commit('updateStory', data.story)
     } catch (e) {
       commit('addFailedImport', story)
     }
   },
-  async createStory ({ state, commit }, { story }) {
+  async createStory ({ state, commit }, { story, publish }) {
     try {
-      const { data } = await axios.post(`/auth/spaces/${state.spaceId}/stories`, {
-        story
-      })
+      const body = {
+        story,
+        force_update: 1
+      }
+      if (publish) {
+        body.publish = 1
+      }
+      const { data } = await axios.post(`/auth/spaces/${state.spaceId}/stories`, body)
       commit('addStory', data.story)
     } catch (e) {
       commit('addFailedImport', story)
