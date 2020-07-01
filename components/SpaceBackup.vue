@@ -112,7 +112,9 @@ export default {
       this.download.started = true
       const zip = new JSZip()
       for (let i = 0; i < this.storiesForDownload.length; i++) {
-        const data = await this.fetchStory(this.storiesForDownload[i].id)
+        const data = await this.$store.dispatch('storyblok/fetchStory', {
+          id: this.storiesForDownload[i].id
+        })
         const jsonData = prettyPrint ? JSON.stringify(data, null, 2) : JSON.stringify(data)
         zip.file(data.full_slug + '.json', jsonData)
         this.download.idx++

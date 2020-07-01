@@ -17,10 +17,12 @@ or get into your own Storyblok Space and install this application.
 # Current Features
 - List all available stories in the space where this app has been installed
 - Create and download a ZIP Archive (Backup) of the whole space. 
+- Import the ZIP Archive in the space where a backup has been made. 
 
 # Upcoming / Planned Features
 - Select certain stories for download
-- Import a backup created by "sb-offline-backup"
+- Backup and Import Storyblok's components
+- Backup and Import Storyblok's Assets
 
 ## Build Setup
 
