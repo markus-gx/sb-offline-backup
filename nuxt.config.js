@@ -4,7 +4,7 @@ export default {
    ** Nuxt rendering mode
    ** See https://nuxtjs.org/api/configuration-mode
    */
-  mode: 'spa',
+  mode: 'universal',
   /*
    ** Nuxt target
    ** See https://nuxtjs.org/api/configuration-target
@@ -62,8 +62,7 @@ export default {
       {
         id: process.env.CONFIDENTIAL_CLIENT_ID,
         secret: process.env.CONFIDENTIAL_CLIENT_SECRET,
-        redirect_uri: process.env.CONFIDENTIAL_CLIENT_REDIRECT_URI,
-        debug: true
+        redirect_uri: process.env.CONFIDENTIAL_CLIENT_REDIRECT_URI
       }
     ]
   ],
